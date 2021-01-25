@@ -1,0 +1,274 @@
+.app-gallery {
+    background: $main-color;
+    min-height: 100vh;
+
+    // start app-gallery-head
+    .app-gallery-head {
+        margin-bottom: $large;
+
+        .gallery-title {
+
+        }
+
+        .gallery-add-btn {
+            
+        }
+    }
+    // === end app-gallery-head
+
+    // start app-gallery-body
+    .app-gallery-body {
+        $dim: 270px;
+        .img-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax($dim, $dim);
+            grid-gap: $medium;
+            .img-item-outer {
+                overflow: hidden;
+
+                // items
+                &:nth-of-type(2) {
+                    grid-column: auto / span 2;
+                    grid-row: auto / span 1;
+                }
+                &:nth-of-type(4) {
+                    grid-column: auto / span 2;
+                    grid-row: auto / span 2;
+                }
+                &:nth-of-type(5) {
+                    grid-column: auto / span 2;
+                    grid-row: auto / span 1;
+                }
+                &:nth-of-type(10) {
+                    grid-column: auto / span 2;
+                    grid-row: auto / span 1;
+                }
+                // === end items
+
+                .img-item {
+                    width: 100%;
+                    height: 100%;
+                    cursor: pointer;
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    // start img-item-details
+                    .img-item-details {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba($third-color, .8);
+                        z-index: 2;
+                        padding: $medium;
+                        text-align: center;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        color: $white;
+                        transform: scale(0);
+                        transform-origin: center center;
+                        transition: all .5s cubic-bezier(1,-0.1, 0, 1.99);
+
+
+
+                        .img-item-details-date {
+                            display: none;
+                        }
+
+                        .img-item-details-title {
+                            margin-bottom: 0;
+                            color: $white;
+                            font-weight: bold;
+                            letter-spacing: 1px;
+                        }
+
+                        .the-icon {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 1000%;
+                            color: $white;
+                            opacity: .2;
+
+                        }
+                    }
+                    // ==== end img-item-details
+
+                    &:hover {
+                        .img-item-details {
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+
+        .full-img-details-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+            background: rgba($main-color, .9);
+            z-index: 9;
+            overflow-y: auto;
+
+            .de {
+                color: $white;
+                text-transform: capitalize;
+                letter-spacing: 1px;
+                margin-bottom: $large;
+
+                .full-img-details-box-title {
+                    margin-bottom: $small;
+                }
+
+                .my-btn {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    width: $y-axis;
+                    height: $y-axis;
+                    padding: 0;
+                    font-size: 1.5rem;
+                    border-radius: 50%;
+                    min-width: auto;
+
+                    .the-icon {
+                        margin: 0;
+
+                    }
+                }
+            }
+
+            .img {
+                display: flex;
+                justify-content: center;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .de-actions {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: $large;
+
+                .my-btn {
+                    background: $third-color;
+                    border-color: $third-color;
+                    &:hover {
+                        background: transparent;
+                        color: $third-color;
+                    }
+                }
+            }
+
+        }
+    }
+    // ==== end app-gallery-body
+
+    // start app-gallery-footer
+    .app-gallery-footer {
+
+    }
+    // ==== end app-gallery-footer
+
+    // start app-gallery-modal
+    .app-gallery-modal {
+        $bg: rgba($main-color, .8);
+        .modal {
+            background: $bg;
+            padding-left: 0 !important;
+            border-left: 5px solid $second-color;
+            &.show {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal-dialog {
+                border: none;
+
+                .modal-content {
+                    border: none;
+                    border-radius: 5px;
+
+                    // start modal-header
+                    .modal-header {
+                        margin-top: $medium;
+                        margin-bottom: $medium;
+                        padding: 0 0 0 $medium;
+                        border-bottom: 0;
+                        // border-left: 5px solid $second-color;
+                        border-radius: 0;
+                        position: relative;
+
+                        .modal-title {
+                            color: $main-color;
+                            letter-spacing: 1px;
+                        }
+
+                        .close {
+                            min-width: auto;
+                            background: $second-color;
+                            color: $white;
+                            opacity: 1;
+                            position: absolute;
+                            margin: 0;
+                            top: 50%;
+                            right: 0;
+                            transform: translate(50%, -50%);
+                            width: $y-axis;
+                            padding: 0;
+                            box-shadow: 0 0 0 10px $main-color;
+
+                            span {
+                                margin-bottom: 3px;
+                            }
+                        }
+                    }
+                    /// ==== end modal-header
+
+                    // start modal-body
+                    .modal-body {
+                        padding: $medium;
+
+                        .img-title {
+                            
+                        }
+
+                        .custom-file {
+                            height: $y-axis;
+                        }
+                        .custom-file-input {
+
+                        }
+                    }
+                    // ==== end modal-body
+
+                }
+            }
+        }
+    }
+    // ==== end app-gallery-modal
+
+}

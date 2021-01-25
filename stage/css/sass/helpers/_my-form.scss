@@ -1,0 +1,85 @@
+/*
+    * if you are using inputs like (text, email, number) using class normal-inp
+    * if you are using inputs like (file) using class file-inp and put the label class file-inp-label
+*/
+
+.my-form {
+    
+    $btnBg: rgba($main-color, .1);
+
+    .form-group {
+        margin-bottom: $medium;
+    }
+
+    .last-form-group{ 
+        margin-bottom: $large;
+    }
+
+    .normal-inp {
+        height: $y-axis;
+        padding: 0 $medium;
+        background: $btnBg;
+        color: $main-color;
+        border: 1px solid $btnBg;
+        border-radius: 20px;
+        font-size: 1rem;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        transition: background .5s;
+
+        &::placeholder {
+            font-size: .9rem;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            transition: color .5s;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background: $second-color;
+            color: $white;
+            &::placeholder {
+                color: $white;
+            }
+        }
+    }
+
+    .file-inp {
+        display: none;
+
+        & ~ .file-inp-label {
+            @extend .normal-inp;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0;
+            padding-right: 0;
+            overflow: hidden;
+
+            &::after {
+                content: "choose file";
+                text-transform: capitalize;
+                background: #C15E7F;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 $medium;
+                color: $white;
+            }
+        }
+
+    }
+
+    .submit-btn {
+        &.no-active {
+            pointer-events: none;
+            user-select: none;
+            background: $btnBg;
+            border-color: $btnBg;
+            color: $main-color;
+        }
+    }
+
+}

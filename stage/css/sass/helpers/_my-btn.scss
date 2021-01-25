@@ -1,0 +1,29 @@
+.my-btn {
+    background: transparent;
+    border: 1px solid $second-color;
+    background: $second-color;
+    color: $white;
+    height: $y-axis;
+    padding: 0 $medium;
+    min-width: 120px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    transition: all .5s;
+
+    .the-icon {
+        margin-right: $small;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: transparent;
+        color: $second-color;
+    }
+}

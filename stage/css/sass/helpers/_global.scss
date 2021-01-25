@@ -1,0 +1,15 @@
+body {
+    font-size: 16px;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    color: $main-color;
+}
+
+.padding-sec {
+    padding-top: $large;
+    padding-bottom: $large;
+}
+
+a:hover {
+    text-decoration: none;
+}
