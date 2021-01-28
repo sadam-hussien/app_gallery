@@ -34,6 +34,39 @@
 
     }
 
+    // pagination
+    if (isset($_POST["pageNumber"])) {
+
+        $pageNum = $_POST["pageNumber"];
+
+        $quiry->page = $pageNum;
+
+        $quiry->startOf();
+
+        $imgs = $quiry->fetchAllImgs();
+
+        $output = "";
+
+        foreach($imgs as $img) {
+
+            $output .= "<div class='img-item-outer'>
+                <div class='img-item'>
+                    <img src='uploads/".$img["path"]."' class='img-fluid' alt='".$img["title"]."' >
+
+                    <div class='img-item-details' data-id='".$img["id"]."'>
+                        <h5 class='img-item-details-title text-capitalize'>".$img["title"]."</h5>
+                        <h6 class='img-item-details-date'>".$img["uploaded"]."</h6>
+                        <ion-icon class='the-icon' name='expand-outline'></ion-icon>
+                    </div> 
+                </div>
+            </div>";
+
+        }
+
+        echo $output;
+
+    }
+
     // upload img
     if (isset($_POST["uploadImg"])) {
         

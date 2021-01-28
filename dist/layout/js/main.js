@@ -154,11 +154,34 @@ $(function () {
       },
       chache: false,
       success: function (response) {
-        $(".cssloader").slideUp("slow", function () {
-          $(this).remove();
+        $(".cssloader").fadeOut("slow", function () {
+          $(".app-gallery-body-inner").html(response);
         });
-        $(".app-gallery-body-inner").html(response);
       }
     });
-  }
+  } // pagination
+
+
+  let pageLink = $(".app-gallery .page-link");
+  pageLink.each(function () {
+    $(this).on("click", function (e) {
+      e.preventDefault();
+      $(this).addClass("active").parent().siblings().find("a.page-link").removeClass("active");
+      let pageNumber = $(this).data("page");
+      $(".cssloader").fadeIn("slow");
+      $(".app-gallery-body-inner").html("");
+      $.ajax({
+        url: "upload.php",
+        method: "POST",
+        data: {
+          pageNumber: pageNumber
+        },
+        success: function (response) {
+          $(".cssloader").fadeOut("slow", function () {
+            $(".app-gallery-body-inner").html(response).fadeIn("slow");
+          });
+        }
+      });
+    });
+  });
 });

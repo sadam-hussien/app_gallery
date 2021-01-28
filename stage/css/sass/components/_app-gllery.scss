@@ -16,6 +16,41 @@
     }
     // === end app-gallery-head
 
+    // start pagination
+    .pagination {
+        margin-bottom: $medium;
+
+        .page-link {
+            height: $y-axis;
+            width: $y-axis;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: $main-color;
+            border: none;
+            transition: all .5s;
+
+            &.disabled-btn {
+                pointer-events: none;
+                opacity: .2;
+                cursor: not-allowed;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+            &:hover, &.active {
+                background: $second-color;
+                color: $white;
+
+            }
+        }
+    }
+    // === end navigation
+
     // start app-gallery-body
     .app-gallery-body {
         $dim: 270px;

@@ -8,6 +8,12 @@
 
     <section class="app-gallery padding-sec">
 
+        <!-- start the preloader  -->
+        <div class="cssloader">
+            <div class="loader"></div>
+        </div>
+        <!-- // end the preloader  -->
+
         <div class="container">
         
             <!-- start app-gallery-head  -->
@@ -18,13 +24,10 @@
 
             <!-- start app-gallery-body  -->
             <section class="app-gallery-body">
-                <!-- start the preloader  -->
-                <div class="cssloader">
-                    <div class="sh1"></div>
-                    <div class="sh2"></div>
-                    <h4 class="lt">loading</h4>
-                </div>
-                <!-- // end the preloader  -->
+                <!-- pagination  -->
+                <?php require components . "gallery/pagination.php"; ?>
+
+                <!-- content  -->
                 <?php require components . "gallery/body.php"; ?>
             </section>
             <!-- // end app-gallery-body  -->

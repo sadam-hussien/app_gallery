@@ -9,6 +9,15 @@
 
     class Query extends Connection {
 
+        public CONST LIMIT = 10;
+
+        public $page = 0;
+
+        // start of items
+        public function startOf() {
+            return self::LIMIT * $this->page;
+        }
+        
         // upload img method
         public function uploadImg($title, $img) {
 
@@ -28,7 +37,7 @@
         // fetchAllImages
         public function fetchAllImgs() {
 
-            $sql = "SELECT * FROM gallery ORDER BY id DESC LIMIT 10";
+            $sql = "SELECT * FROM gallery ORDER BY id DESC LIMIT ".$this->startOf().", ".self::LIMIT."";
 
             $stmt = $this->con->prepare($sql);
 
@@ -37,6 +46,23 @@
             $results = $stmt->fetchAll();
 
             return $results;
+
+        }
+
+        // pagination - get the images count
+        public function imagesCount() {
+
+            $sql = "SELECT COUNT(id) AS number_of_imgs FROM gallery";
+
+            $stmt = $this->con->prepare($sql);
+
+            $stmt->execute();
+
+            $results = $stmt->fetchColumn();
+
+            $results = intval($results);
+
+            return ceil($results / self::LIMIT);
 
         }
 
